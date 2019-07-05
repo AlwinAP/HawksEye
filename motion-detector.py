@@ -31,11 +31,11 @@ while True:
     previous_state = current_state
     current_state = GPIO.input(sensor)
     if current_state != previous_state:
-	  # Motion detected
+	# Motion detected
         new_state = "HIGH" if current_state else "LOW"
 		print("GPIO pin %s is %s" % (sensor, new_state))
 		
-	  # instance of MIMEMultipart 
+	# instance of MIMEMultipart 
         msg = MIMEMultipart() 
         
         # storing the senders email address 
@@ -73,17 +73,17 @@ while True:
         # creates SMTP session 
         server = smtplib.SMTP('smtp.gmail.com', 587) 
 		
-	      # start TLS for security 
+	# start TLS for security 
         server.starttls()
 		
         # Authentication
         server.login(fromaddr, "Password_of_the_sender")
 		
-	      # Converts the Multipart msg into a string 
+	# Converts the Multipart msg into a string 
         text = msg.as_string() 
 		
         # sending the mail 
         server.sendmail(fromaddr, toaddr, text) 
 		
-	      # terminating the session 
+	# terminating the session 
         server.quit()
